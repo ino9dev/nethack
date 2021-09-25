@@ -1,0 +1,22 @@
+version: '3'
+services:
+  nethack:
+        build:
+            context: ./nethack
+        container_name: nethack
+        restart: always
+        privileged: true
+        tty: true
+        volumes:
+            - ./save:/var/games/nethack/save
+        networks:
+            - game
+
+networks:
+    game:
+        driver: bridge
+        ipam:
+                driver: default
+                config:
+                    - subnet: 192.168.20.0/24
+
