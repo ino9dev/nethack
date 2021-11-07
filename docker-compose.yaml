@@ -9,6 +9,7 @@ services:
         tty: true
         volumes:
             - ./save:/var/games/nethack/save
+            - ./roothome/.nethackrc:/root/.nethackrc
         networks:
             - game
 
