@@ -1,0 +1,34 @@
+######################################################################
+#  
+# xnethack service deploy
+# 
+# xnethack image is dorowu/ubuntu-desktop-lxde-vnc 
+# xrdp 80 <-> localhost:8080
+# networking is any(you can change if you want to change)
+# 
+######################################################################
+version: '3'
+services:
+  xnethack:
+        build:
+            context: ./xnethack
+        container_name: xnethack
+        restart: always
+        privileged: true
+        tty: true
+        volumes:
+            - ./save:/var/games/nethack/save
+            - ./roothome/.nethackrc:/root/.nethackrc
+        networks:
+            - game
+        ports:
+            - "8080:80"
+
+networks:
+    game:
+        driver: bridge
+        ipam:
+                driver: default
+                config:
+                    - subnet: 192.168.25.0/24
+

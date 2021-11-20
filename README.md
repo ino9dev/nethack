@@ -18,10 +18,22 @@ cd nethack
 
 ## dockerまわり
 
+### nethack の場合
 ```
+cd ./nethack/
 docker-compose up -d #しばらく待つ
 docker exec -it nethack /bin/bash
 root@baad54b18285:~# /usr/games/nethack
+```
+
+### xnethack の場合
+
+```
+cd ./xnethack/
+docker-compose up -d #しばらく待つ
+docker exec -it xnethack /bin/bash
+
+host側でブラウザを起動し、http://localhost:8080/でアクセス
 ```
 
 # その他
