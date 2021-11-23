@@ -10,19 +10,21 @@
 version: '3'
 services:
   xnethack:
-        build:
-            context: ./xnethack
-        container_name: xnethack
-        restart: always
-        privileged: true
-        tty: true
-        volumes:
-            - ./save:/var/games/nethack/save
-            - ./roothome/.nethackrc:/root/.nethackrc
-        networks:
-            - game
-        ports:
-            - "8080:80"
+    environment:
+        - RESOLUTION=1920x1200
+    build:
+        context: ./xnethack
+    container_name: xnethack
+    restart: always
+    privileged: true
+    tty: true
+    volumes:
+        - ./save:/var/games/nethack/save
+        - ./roothome/.nethackrc:/root/.nethackrc
+    networks:
+        - game
+    ports:
+        - "8080:80"
 
 networks:
     game:
